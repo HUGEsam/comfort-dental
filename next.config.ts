@@ -45,8 +45,15 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  compress: true,
   cacheComponents: true,
   partialPrefetching: true,
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 86400,
+    deviceSizes: [360, 480, 768, 1024, 1200, 1400],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
@@ -55,6 +62,24 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         headers: securityHeaders,
+      },
+      {
+        source: "/assets/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+      {
+        source: "/images/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
+          },
+        ],
       },
     ];
   },

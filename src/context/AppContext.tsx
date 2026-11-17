@@ -10,9 +10,9 @@ import {
   PatientInquiry,
   CountryInfo,
   ServiceDetail,
+  Language,
 } from '@/types';
 
-type Language = 'en' | 'bn';
 type ThemeMode = 'light' | 'dark';
 
 interface AppContextType {
@@ -24,7 +24,9 @@ interface AppContextType {
   toggleTheme: () => void;
   selectedDoctor: string;
   setSelectedDoctor: (doc: string) => void;
-  scrollToBooking: (doctorName?: string) => void;
+  selectedService: string;
+  setSelectedService: (service: string) => void;
+  scrollToBooking: (doctorOrService?: string, serviceName?: string) => void;
 
   // Global Dynamic Theme & Gradients
   themeConfig: ThemeConfig;
@@ -53,7 +55,7 @@ interface AppContextType {
   isLoggedIn: boolean;
   setUser: (user: User | null) => void;
   loginPatientByName: (name: string) => { success: boolean; needsRegistration?: boolean; user?: User };
-  registerPatient: (data: { name: string; phone: string; email: string }) => User;
+  registerPatient: (data: { name: string; phone: string; email: string; role?: UserRole }) => User;
   logoutPatient: () => void;
   updateUserName: (newName: string) => void;
   updateUserProfile: (updates: { name?: string; phone?: string; email?: string }) => void;
@@ -174,8 +176,9 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>('en');
-  const [theme, setThemeState] = useState<ThemeMode>('dark');
+  const [theme, setThemeState] = useState<ThemeMode>('light');
   const [selectedDoctor, setSelectedDoctor] = useState<string>('');
+  const [selectedService, setSelectedService] = useState<string>('');
 
   // Global Dynamic Theme Config
   const [themeConfig, setThemeConfig] = useState<ThemeConfig>(defaultThemeConfig);
@@ -214,7 +217,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       phone: '01778-320966',
       role: 'customer',
       bio: 'Patient member since 2024.',
-      avatar: '/dr-alim.jpg',
+      avatar: '/images/dr-alim.jpg',
       points: 0,
       dailyShareCount: 0,
       lastShareDate: '2026-10-20',
@@ -232,7 +235,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       phone: '01924042036',
       role: 'customer',
       bio: 'Dental implant restoration patient.',
-      avatar: '/dr-shanta.jpg',
+      avatar: '/images/dr-shanta.jpg',
       points: 100,
       dailyShareCount: 0,
       lastShareDate: '2026-10-20',
@@ -252,7 +255,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       phone: '02 47291419',
       role: 'moderator',
       bio: 'Senior Clinical Coordinator at Basabo Chamber.',
-      avatar: '/logo.png',
+      avatar: '/assets/logo.png',
       points: 300,
       dailyShareCount: 0,
       lastShareDate: '2026-10-20',
@@ -289,7 +292,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         if (savedTheme === 'dark') document.documentElement.classList.add('dark');
         else document.documentElement.classList.remove('dark');
       } else {
-        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('dark');
       }
 
       const savedLang = localStorage.getItem('comfort_dental_lang') as Language;
@@ -322,7 +325,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
                 email: parsedLegacy.email || '',
                 role: (parsedLegacy.role as UserRole) || 'customer',
                 bio: parsedLegacy.bio || 'Patient member at Comfort Dental Surgery.',
-                avatar: parsedLegacy.avatar || '/dr-alim.jpg',
+                avatar: parsedLegacy.avatar || '/images/dr-alim.jpg',
                 points: parsedLegacy.points || 0,
                 dailyShareCount: 0,
                 lastShareDate: new Date().toISOString().split('T')[0],
@@ -373,13 +376,23 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     setThemeConfig((prev) => ({ ...prev, ...newConfig }));
   };
 
-  const scrollToBooking = (doctorName?: string) => {
-    if (doctorName) setSelectedDoctor(doctorName);
+  const scrollToBooking = (doctorOrService?: string, serviceName?: string) => {
+    if (serviceName) {
+      setSelectedService(serviceName);
+    }
+    if (doctorOrService) {
+      const lower = doctorOrService.toLowerCase();
+      if (lower.includes('dr.') || lower.includes('prof') || lower.includes('alim') || lower.includes('shanta') || lower.includes('ডাঃ')) {
+        setSelectedDoctor(doctorOrService);
+      } else {
+        setSelectedService(doctorOrService);
+      }
+    }
     if (currentView !== 'home') setCurrentView('home');
     setTimeout(() => {
       const target = document.getElementById('appointment');
       if (target) target.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    }, 120);
   };
 
   // Device-Scoped Patient Authentication & Session Management
@@ -414,7 +427,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
             email: parsed.email || '',
             role: 'customer',
             bio: 'Patient member at Comfort Dental Surgery.',
-            avatar: '/dr-alim.jpg',
+            avatar: '/images/dr-alim.jpg',
             points: parsed.points || 0,
             dailyShareCount: 0,
             lastShareDate: new Date().toISOString().split('T')[0],
@@ -440,7 +453,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     return { success: false, needsRegistration: true };
   }, []);
 
-  const registerPatient = useCallback((data: { name: string; phone: string; email: string }): User => {
+  const registerPatient = useCallback((data: { name: string; phone: string; email: string; role?: UserRole }): User => {
     const cleanName = sanitizeText(data.name);
     const cleanPhone = sanitizeText(data.phone);
     const cleanEmail = sanitizeText(data.email);
@@ -451,9 +464,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       name: cleanName,
       phone: cleanPhone,
       email: cleanEmail,
-      role: 'customer',
+      role: data.role || 'customer',
       bio: 'Patient member at Comfort Dental Surgery & Implant Center.',
-      avatar: '/dr-alim.jpg',
+      avatar: '/images/dr-alim.jpg',
       points: 0,
       dailyShareCount: 0,
       lastShareDate: new Date().toISOString().split('T')[0],
@@ -498,13 +511,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     name,
     email,
     phone,
+    role,
   }: {
     name: string;
     email: string;
     phone: string;
     role: UserRole;
   }): User => {
-    return registerPatient({ name, phone, email });
+    return registerPatient({ name, phone, email, role });
   }, [registerPatient]);
 
   const updateUserName = (newName: string) => {
@@ -847,6 +861,8 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         toggleTheme,
         selectedDoctor,
         setSelectedDoctor,
+        selectedService,
+        setSelectedService,
         scrollToBooking,
         themeConfig,
         updateThemeConfig,

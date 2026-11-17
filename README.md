@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Comfort Dental Surgery & Implant Center
 
-## Getting Started
+Web platform for **Comfort Dental Surgery & Implant Center** (BDDL Basabo Height, 1 Central Basabo, 2nd Floor, Dhaka-1214), built with Next.js App Router, Tailwind CSS, Framer Motion, Lucide Icons, and Three.js, alongside a self-contained portable HTML bundle.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Project Structure (File Explorer)
+
+```text
+.
+├── public/                     # Static assets served at site root
+│   ├── assets/                 # Clinic brand logo & banner (logo.png, clinic-banner.png)
+│   └── images/                 # Consultant portraits & clinical procedure photography
+├── src/
+│   ├── app/                    # Next.js App Router entry, metadata, & special routes
+│   │   ├── favicon.ico
+│   │   ├── globals.css         # Apple Pearl Liquid Glass theme & mobile input safeguards
+│   │   ├── layout.tsx          # Root layout, SEO metadata, Viewport & safe-area spacing
+│   │   ├── manifest.ts         # PWA / mobile home-screen web app manifest
+│   │   ├── not-found.tsx       # Branded 404 recovery page
+│   │   ├── page.tsx            # Main landing composition & role portal router
+│   │   ├── robots.ts           # Search engine crawler policy
+│   │   └── sitemap.ts          # Canonical sitemap route
+│   ├── components/
+│   │   ├── layout/             # Navbar, Footer, FloatingWidgets (mobile dock), SmoothScroll
+│   │   ├── modals/             # ServiceModal, AuthModal, CountrySelectorModal, ServicesMegaMenu, ThreeDotDrawer
+│   │   ├── portals/            # CustomerPortal, ModeratorDashboard, AdminDashboard
+│   │   ├── sections/           # Hero, SearchBar, Consultants, AssociateDentists, ServicesBento, SmileSlider, SterilizationProtocol, BookingAndContact
+│   │   └── ui/                 # ErrorBoundary, ThreeVisuals (3D implant mesh with WebGL fallback)
+│   ├── context/
+│   │   └── AppContext.tsx      # Device-scoped session, appointments, services, & bilingual UI state
+│   ├── data/
+│   │   ├── servicesData.ts     # Clinical treatment catalog
+│   │   └── translations.ts     # English / Bengali UI copy
+│   ├── types/
+│   │   └── index.ts            # Shared TypeScript interfaces
+│   └── utils/
+│       └── security.ts         # Input sanitization, phone/email validation, & rate limiting
+├── standalone/
+│   └── index.html              # Zero-dependency single-file HTML bundle (offline / static drop)
+├── next.config.ts              # Next.js configuration & security headers
+├── eslint.config.mjs           # ESLint configuration (excludes standalone/)
+└── package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Running Locally & Testing on Your Phone
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites (PowerShell on Windows)
+```powershell
+$env:PATH = "C:\Program Files\nodejs;$env:PATH"
+```
 
-## Learn More
+### Development Server (Same Wi-Fi Phone Preview)
+```powershell
+npm run dev
+```
+1. Open `http://localhost:3000` on your PC.
+2. On your phone (connected to the same Wi-Fi network), open `http://<YOUR-PC-IP>:3000` (replace `<YOUR-PC-IP>` with your PC's IPv4 address from `ipconfig`).
 
-To learn more about Next.js, take a look at the following resources:
+### Quality Checks & Production Build
+```powershell
+npm run lint
+npm run build
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Publishing Options
 
-## Deploy on Vercel
+### Option A: Full Next.js App (Recommended)
+Deploy this repository directly to **Vercel**, **Netlify**, or any **Node.js 20+** server:
+- Build command: `npm run build`
+- Start command: `npm start`
+- Optional environment variables:
+  - `NEXT_PUBLIC_SITE_URL` — Canonical production domain (used by `robots.ts` and `sitemap.ts`).
+  - `NEXT_PUBLIC_WEB3FORMS_KEY` — Enables background Web3Forms email dispatch on appointment submission in addition to instant WhatsApp confirmation.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Option B: Portable Zero-Dependency Bundle
+Upload `standalone/index.html` to any static host (Netlify Drop, Cloudflare Pages, GitHub Pages) or open it directly in any desktop or mobile browser.

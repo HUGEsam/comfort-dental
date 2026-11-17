@@ -1,4 +1,5 @@
 export type UserRole = 'customer' | 'moderator' | 'admin';
+export type Language = 'en' | 'bn' | 'hi' | 'ne' | 'fa' | 'si';
 
 export interface ActivityItem {
   id: string;

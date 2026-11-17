@@ -20,7 +20,7 @@ export const servicesData: ServiceDetail[] = [
       doctorName: 'Assoc. Prof. Dr. Md. Abdul Alim',
       doctorRole: 'Head of Dept. | Oral & Maxillofacial Surgery',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-dentist-checking-a-patient-teeth-41481-large.mp4',
-      videoThumbnail: '/dr-alim.jpg',
+      videoThumbnail: '/images/dr-alim.jpg',
       aiStreamingText:
         '“Dental implantology has entered a new era of digital precision. With our special training in Japan, Malaysia, and India, we utilize 3D CBCT bone-density navigation to place Swiss-grade titanium fixtures with zero compromise. The procedure preserves your facial bone volume, prevents neighboring teeth from tipping, and offers chewing stability indistinguishable from biological roots.”',
     },
@@ -28,7 +28,7 @@ export const servicesData: ServiceDetail[] = [
       doctorName: 'Assoc. Prof. Dr. Kamrun Nahar (Shanta)',
       doctorRole: 'Head of Dept. | Conservative Dentistry & Endodontics',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-dentist-working-in-a-dental-office-41480-large.mp4',
-      videoThumbnail: '/dr-shanta.jpg',
+      videoThumbnail: '/images/dr-shanta.jpg',
       aiStreamingText:
         '“From the prosthetic perspective, our goal is absolute aesthetic harmony. We fabricate individual custom zirconia abutments that support the delicate emergence profile of your marginal gingiva. No gray lines, no artificial gum recession—only a radiant, natural tooth that blends seamlessly into your smile.”',
     },
@@ -52,7 +52,7 @@ export const servicesData: ServiceDetail[] = [
       doctorName: 'Assoc. Prof. Dr. Md. Abdul Alim',
       doctorRole: 'Head of Dept. | Oral & Maxillofacial Surgery',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-dentist-checking-a-patient-teeth-41481-large.mp4',
-      videoThumbnail: '/dr-alim.jpg',
+      videoThumbnail: '/images/dr-alim.jpg',
       aiStreamingText:
         '“Impacted mandibular third molars often rest millimeters from the inferior alveolar nerve bundle. Through high-magnification surgical visualization and ultrasonic piezosurgery, we isolate and remove the tooth while fully safeguarding neurosensory integrity. Post-operative swelling is minimized, allowing rapid recovery within 48 to 72 hours.”',
     },
@@ -60,7 +60,7 @@ export const servicesData: ServiceDetail[] = [
       doctorName: 'Assoc. Prof. Dr. Kamrun Nahar (Shanta)',
       doctorRole: 'Head of Dept. | Conservative Dentistry & Endodontics',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-dentist-working-in-a-dental-office-41480-large.mp4',
-      videoThumbnail: '/dr-shanta.jpg',
+      videoThumbnail: '/images/dr-shanta.jpg',
       aiStreamingText:
         '“Surgery and restorative preservation work hand-in-hand. When cysts or surgical lesions affect adjacent teeth, we perform simultaneous apicoectomy and retro-filling using bioactive mineral trioxide aggregate (MTA), saving natural roots that other clinics would routinely sacrifice.”',
     },
@@ -84,7 +84,7 @@ export const servicesData: ServiceDetail[] = [
       doctorName: 'Assoc. Prof. Dr. Md. Abdul Alim',
       doctorRole: 'Head of Dept. | Oral & Maxillofacial Surgery',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-dentist-checking-a-patient-teeth-41481-large.mp4',
-      videoThumbnail: '/dr-alim.jpg',
+      videoThumbnail: '/images/dr-alim.jpg',
       aiStreamingText:
         '“Our Tokyo laser protocols revolutionize surgical recovery. Because the laser beam seals lymphatics and micro-vessels upon contact, there is virtually zero bleeding during surgery and remarkably negligible inflammatory discomfort post-operatively. Patients resume normal eating and speaking immediately.”',
     },
@@ -92,7 +92,7 @@ export const servicesData: ServiceDetail[] = [
       doctorName: 'Assoc. Prof. Dr. Kamrun Nahar (Shanta)',
       doctorRole: 'Head of Dept. | Conservative Dentistry & Endodontics',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-dentist-working-in-a-dental-office-41480-large.mp4',
-      videoThumbnail: '/dr-shanta.jpg',
+      videoThumbnail: '/images/dr-shanta.jpg',
       aiStreamingText:
         '“Laser technology is equally transformative in aesthetic dentistry. When preparing teeth for porcelain veneers, laser sulcular troughing delivers pristine impressions without gum bleeding. We also use laser photodynamic energy to sterilize refractory root canals deep inside dentinal tubules.”',
     },
@@ -116,7 +116,7 @@ export const servicesData: ServiceDetail[] = [
       doctorName: 'Assoc. Prof. Dr. Md. Abdul Alim',
       doctorRole: 'Head of Dept. | Oral & Maxillofacial Surgery',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-dentist-checking-a-patient-teeth-41481-large.mp4',
-      videoThumbnail: '/dr-alim.jpg',
+      videoThumbnail: '/images/dr-alim.jpg',
       aiStreamingText:
         '“When deep infections break past the tooth root into the jaw bone causing acute abscesses, surgical decompression combined with Dr. Shanta’s endodontic therapy saves teeth that would otherwise require emergency extraction.”',
     },
@@ -124,7 +124,7 @@ export const servicesData: ServiceDetail[] = [
       doctorName: 'Assoc. Prof. Dr. Kamrun Nahar (Shanta)',
       doctorRole: 'Head of Dept. | Conservative Dentistry & Endodontics',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-dentist-working-in-a-dental-office-41480-large.mp4',
-      videoThumbnail: '/dr-shanta.jpg',
+      videoThumbnail: '/images/dr-shanta.jpg',
       aiStreamingText:
         '“As an FCPS endodontic specialist, I treat root canals with microscopic precision. Every canal curve, accessory branching, and isthmus is chemomechanically debrided with warm sodium hypochlorite irrigation and sealed with biocompatible silicate ceramics. The procedure is entirely painless.”',
     },
@@ -148,7 +148,7 @@ export const servicesData: ServiceDetail[] = [
       doctorName: 'Assoc. Prof. Dr. Md. Abdul Alim',
       doctorRole: 'Head of Dept. | Oral & Maxillofacial Surgery',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-dentist-checking-a-patient-teeth-41481-large.mp4',
-      videoThumbnail: '/dr-alim.jpg',
+      videoThumbnail: '/images/dr-alim.jpg',
       aiStreamingText:
         '“For adult patients presenting with severe skeletal malocclusions or facial asymmetry, we combine orthodontic tooth alignment with minor orthognathic corrective surgery to optimize both airway volume and profile balance.”',
     },
@@ -156,7 +156,7 @@ export const servicesData: ServiceDetail[] = [
       doctorName: 'Assoc. Prof. Dr. Kamrun Nahar (Shanta)',
       doctorRole: 'Head of Dept. | Conservative Dentistry & Endodontics',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-dentist-working-in-a-dental-office-41480-large.mp4',
-      videoThumbnail: '/dr-shanta.jpg',
+      videoThumbnail: '/images/dr-shanta.jpg',
       aiStreamingText:
         '“Clear aligners are custom-molded to fit snugly over your teeth, gently applying calculated forces to align your smile discreetly. You can remove them for important presentations, meals, and flossing with zero dietary restrictions.”',
     },
@@ -180,7 +180,7 @@ export const servicesData: ServiceDetail[] = [
       doctorName: 'Assoc. Prof. Dr. Md. Abdul Alim',
       doctorRole: 'Head of Dept. | Oral & Maxillofacial Surgery',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-dentist-checking-a-patient-teeth-41481-large.mp4',
-      videoThumbnail: '/dr-alim.jpg',
+      videoThumbnail: '/images/dr-alim.jpg',
       aiStreamingText:
         '“A Hollywood smile is grounded in anatomical stability. Before placing aesthetic veneers, we evaluate the temporomandibular joint (TMJ) and canine guidance to ensure your newly designed smile withstands heavy masticatory forces without chipping.”',
     },
@@ -188,7 +188,7 @@ export const servicesData: ServiceDetail[] = [
       doctorName: 'Assoc. Prof. Dr. Kamrun Nahar (Shanta)',
       doctorRole: 'Head of Dept. | Conservative Dentistry & Endodontics',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-dentist-working-in-a-dental-office-41480-large.mp4',
-      videoThumbnail: '/dr-shanta.jpg',
+      videoThumbnail: '/images/dr-shanta.jpg',
       aiStreamingText:
         '“Cosmetic veneers are an artistic endeavor. We preserve maximum natural enamel through microscopic enamel feathering, layering translucent opalescent porcelain that captures and reflects light identically to pristine dental enamel.”',
     },
@@ -212,7 +212,7 @@ export const servicesData: ServiceDetail[] = [
       doctorName: 'Assoc. Prof. Dr. Md. Abdul Alim',
       doctorRole: 'Head of Dept. | Oral & Maxillofacial Surgery',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-dentist-checking-a-patient-teeth-41481-large.mp4',
-      videoThumbnail: '/dr-alim.jpg',
+      videoThumbnail: '/images/dr-alim.jpg',
       aiStreamingText:
         '“Implant-supported zirconia bridges provide elderly patients who suffered tooth loss with a lifetime restoration. No loose dentures or bone shrinkage—chew apples, meat, and nuts with complete peace of mind.”',
     },
@@ -220,7 +220,7 @@ export const servicesData: ServiceDetail[] = [
       doctorName: 'Assoc. Prof. Dr. Kamrun Nahar (Shanta)',
       doctorRole: 'Head of Dept. | Conservative Dentistry & Endodontics',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-dentist-working-in-a-dental-office-41480-large.mp4',
-      videoThumbnail: '/dr-shanta.jpg',
+      videoThumbnail: '/images/dr-shanta.jpg',
       aiStreamingText:
         '“Every crown we bond is fabricated using sub-micron CAD/CAM milling to ensure an airtight marginal fit. This prevents secondary micro-leakage and bacteria ingress, safeguarding the underlying tooth for decades.”',
     },
@@ -244,7 +244,7 @@ export const servicesData: ServiceDetail[] = [
       doctorName: 'Assoc. Prof. Dr. Md. Abdul Alim',
       doctorRole: 'Head of Dept. | Oral & Maxillofacial Surgery',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-dentist-checking-a-patient-teeth-41481-large.mp4',
-      videoThumbnail: '/dr-alim.jpg',
+      videoThumbnail: '/images/dr-alim.jpg',
       aiStreamingText:
         '“Early intervention for pediatric oral trauma, tongue ties (frenectomy), or supernumerary teeth prevents complex orthognathic and speech impairments as the child grows.”',
     },
@@ -252,7 +252,7 @@ export const servicesData: ServiceDetail[] = [
       doctorName: 'Assoc. Prof. Dr. Kamrun Nahar (Shanta)',
       doctorRole: 'Head of Dept. | Conservative Dentistry & Endodontics',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-dentist-working-in-a-dental-office-41480-large.mp4',
-      videoThumbnail: '/dr-shanta.jpg',
+      videoThumbnail: '/images/dr-shanta.jpg',
       aiStreamingText:
         '“We make dental visits enjoyable for children! By applying high-potency fluoride shields and painless micro-fillings, we safeguard primary teeth until adult teeth erupt in their ideal positions.”',
     },

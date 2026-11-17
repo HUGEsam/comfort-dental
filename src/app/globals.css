@@ -2,189 +2,691 @@
 @import "tailwindcss";
 
 :root {
-  --primary-navy: #0A2540;
-  --dental-cyan: #00A8E8;
+  /* Apple / iOS Liquid Glass Clinical Palette */
+  --bg-primary: #F9FAFC;
+  --text-primary: #0A0A0C;
+  --text-secondary: rgba(10, 10, 12, 0.64);
+  --text-tertiary: rgba(10, 10, 12, 0.42);
+  --ios-muted: #8E8E93;
+  --ios-grouped-bg: #F2F2F7;
+
+  --blue-action: #007AFF;        /* Apple System Blue */
+  --blue-accent: #0A84FF;        /* iOS Luminous Highlight */
+  --blue-deep: #005EC4;
+  --blue-ambient: #F0F6FE;       /* Soft ambient tint */
+  --blue-tint: #E8F2FF;
+
+  /* Liquid Glass Translucent Surfaces */
+  --grad-surface: linear-gradient(145deg, rgba(255, 255, 255, 0.82) 0%, rgba(235, 245, 255, 0.56) 100%);
+  --grad-water-primary: linear-gradient(180deg, rgba(24, 144, 255, 0.66) 0%, rgba(0, 113, 227, 0.78) 100%);
+  --grad-water-secondary: linear-gradient(180deg, rgba(255, 255, 255, 0.64) 0%, rgba(240, 247, 255, 0.34) 100%);
+  --grad-water-emerald: linear-gradient(180deg, rgba(52, 199, 89, 0.70) 0%, rgba(30, 158, 72, 0.80) 100%);
+  --grad-water-danger: linear-gradient(180deg, rgba(255, 69, 58, 0.72) 0%, rgba(215, 0, 21, 0.82) 100%);
+
+  /* Borders & Specular Diffusion */
+  --border-subtle: 1px solid rgba(10, 132, 255, 0.14);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.78);
+  --shadow-liquid: 0 10px 26px -6px rgba(0, 113, 227, 0.30), 0 6px 12px -6px rgba(0, 113, 227, 0.16);
+  --shadow-card: 0 20px 44px -16px rgba(10, 20, 40, 0.07);
+
+  /* Apple Typography & Spring Timing */
+  --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Plus Jakarta Sans", "Helvetica Neue", sans-serif;
+  --ease-apple: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Backward-compatible tokens */
+  --primary-navy: #0B2545;
+  --dental-cyan: #007AFF;
   --bg-cream: #FAF6F0;
-  --heading-olive: #3B4432;
+  --heading-olive: #0A0A0C;
   --gold-accent: #D4AF37;
   --clinical-white: #FFFFFF;
   --slate-dark: #1E293B;
-  --ice-gray: #F4F9FC;
-}
-
-.dark {
-  --primary-navy: #050D1A;
-  --dental-cyan: #38BDF8;
-  --bg-cream: #121614;
-  --heading-olive: #F8FAFC;
-  --gold-accent: #E5C07B;
-  --clinical-white: #0D1B2A;
-  --slate-dark: #F8FAFC;
-  --ice-gray: #0A1322;
+  --ice-gray: #F0F6FE;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  overflow-x: hidden;
-  background-color: #FFFFFF;
-  color: #334155;
+  font-family: var(--font-apple);
+  overflow-x: clip;
+  background-color: var(--bg-primary);
+  color: #1C1C1E;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* =========================================================
-   STANDARD MEDICAL CARD SHELL AESTHETIC & ELEVATION
+   APPLE LIQUID GLASS SQUIRCLE GEOMETRY
    ========================================================= */
-.card-soft-blue,
-.card-medical-shell {
-  border-radius: 20px;
-  background: linear-gradient(180deg, #F0F9FF 0%, #FFFFFF 100%);
-  border: 1px solid #BAE6FD;
-  box-shadow: 0 12px 30px -8px rgba(14, 165, 233, 0.12);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+.squircle-card,
+.card-medical-shell,
+.card-soft-blue {
+  border-radius: 28px;
+  background: var(--grad-surface);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 18px 42px -16px rgba(10, 30, 60, 0.09);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  transition: transform 0.28s var(--ease-apple), box-shadow 0.28s var(--ease-apple), border-color 0.25s ease;
 }
 
-.card-soft-blue:hover,
-.card-medical-shell:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 35px -8px rgba(14, 165, 233, 0.2);
+.squircle-card:hover,
+.card-medical-shell:hover,
+.card-soft-blue:hover {
+  transform: translateY(-3px);
+  border-color: rgba(10, 132, 255, 0.25);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 24px 50px -14px rgba(10, 132, 255, 0.14);
+}
+
+.squircle-sub-box {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+.squircle-badge {
+  border-radius: 12px;
+  background: rgba(240, 246, 254, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(10, 132, 255, 0.18);
+  color: var(--blue-action);
 }
 
 .card-soft-blue-subtle {
-  border-radius: 18px;
-  background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
-  border: 1px solid #BAE6FD;
-  box-shadow: 0 8px 20px -5px rgba(14, 165, 233, 0.08);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(248, 250, 252, 0.72) 100%);
+  border: var(--border-subtle);
+  box-shadow: 0 8px 20px -5px rgba(10, 132, 255, 0.08);
 }
 
-/* Inverted high-contrast CTA button for light-blue tabs & cards */
-.btn-contrast-dark {
-  background: linear-gradient(135deg, #0284C7 0%, #0F172A 100%);
+/* =========================================================
+   IPHONE LIQUID GLASS ("TRANSPARENT WATER DROP") BUTTONS
+   ========================================================= */
+.btn-water-primary,
+.btn-contrast-dark,
+.btn-cyan-gradient {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 13px 26px;
+  border-radius: 9999px;
+  font-family: var(--font-apple);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   color: #FFFFFF !important;
-  box-shadow: 0 4px 14px 0 rgba(15, 23, 42, 0.25);
-  transition: all 0.25s ease-in-out;
+  background: var(--grad-water-primary);
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  backdrop-filter: blur(22px) saturate(190%);
+  -webkit-backdrop-filter: blur(22px) saturate(190%);
+  touch-action: manipulation;
+  /* Translucent droplet lens reflection & subtle inner rim */
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.85),
+    inset 0 -2px 5px rgba(0, 52, 128, 0.28),
+    var(--shadow-liquid);
+  transition: transform 0.25s var(--ease-apple), box-shadow 0.25s var(--ease-apple), background 0.25s ease;
+  will-change: transform;
 }
-.btn-contrast-dark:hover {
-  filter: brightness(1.12);
-  box-shadow: 0 8px 20px -2px rgba(15, 23, 42, 0.35);
-  transform: translateY(-1px);
+
+.btn-water-primary::before,
+.btn-contrast-dark::before,
+.btn-cyan-gradient::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 6%;
+  right: 6%;
+  height: 46%;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.04) 100%);
+  pointer-events: none;
 }
-.btn-contrast-dark:active {
-  transform: translateY(0);
+
+.btn-water-primary:hover,
+.btn-contrast-dark:hover,
+.btn-cyan-gradient:hover {
+  transform: scale(1.025) translateY(-1px);
+  background: linear-gradient(180deg, rgba(24, 144, 255, 0.78) 0%, rgba(0, 113, 227, 0.88) 100%);
+  box-shadow:
+    inset 0 2px 1.5px rgba(255, 255, 255, 0.92),
+    inset 0 -2px 5px rgba(0, 52, 128, 0.3),
+    0 14px 32px -6px rgba(0, 122, 255, 0.42);
+}
+
+.btn-water-primary:active,
+.btn-contrast-dark:active,
+.btn-cyan-gradient:active {
+  transform: scale(0.96) translateY(0);
+  box-shadow:
+    inset 0 1px 2px rgba(0, 40, 100, 0.28),
+    0 4px 12px rgba(0, 113, 227, 0.24);
+}
+
+/* Crystal Clear Transparent Water-Drop Glass Button (Secondary / Neutral) */
+.btn-water-secondary,
+.btn-liquid-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-family: var(--font-apple);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #0066CC !important;
+  background: var(--grad-water-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  touch-action: manipulation;
+  box-shadow:
+    inset 0 1.5px 1.5px rgba(255, 255, 255, 0.96),
+    inset 0 -2px 4px rgba(0, 113, 227, 0.08),
+    0 8px 22px -6px rgba(10, 37, 64, 0.12);
+  transition: transform 0.25s var(--ease-apple), box-shadow 0.25s var(--ease-apple), background 0.25s ease, border-color 0.25s ease;
+  will-change: transform;
+}
+
+.btn-water-secondary::before,
+.btn-liquid-glass::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 6%;
+  right: 6%;
+  height: 46%;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.05) 100%);
+  pointer-events: none;
+}
+
+.btn-water-secondary:hover,
+.btn-liquid-glass:hover {
+  transform: scale(1.02) translateY(-1px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(232, 244, 255, 0.56) 100%);
+  border-color: rgba(10, 132, 255, 0.35);
+  box-shadow:
+    inset 0 2px 1.5px #FFFFFF,
+    0 12px 28px -6px rgba(10, 132, 255, 0.18);
+}
+
+.btn-water-secondary:active,
+.btn-liquid-glass:active {
+  transform: scale(0.96) translateY(0);
+}
+
+/* Emerald Water-Drop Glass Button (WhatsApp, Call, Verify) */
+.btn-liquid-emerald {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-family: var(--font-apple);
+  font-size: 14px;
+  font-weight: 600;
+  color: #FFFFFF !important;
+  background: var(--grad-water-emerald);
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  backdrop-filter: blur(22px) saturate(190%);
+  -webkit-backdrop-filter: blur(22px) saturate(190%);
+  touch-action: manipulation;
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.82),
+    inset 0 -2px 4px rgba(6, 78, 59, 0.25),
+    0 10px 24px -6px rgba(16, 185, 129, 0.32);
+  transition: transform 0.25s var(--ease-apple), box-shadow 0.25s var(--ease-apple);
+}
+
+.btn-liquid-emerald::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 6%;
+  right: 6%;
+  height: 45%;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.04) 100%);
+  pointer-events: none;
+}
+
+.btn-liquid-emerald:hover {
+  transform: scale(1.025) translateY(-1px);
+  box-shadow:
+    inset 0 2px 1.5px rgba(255, 255, 255, 0.9),
+    0 14px 30px -6px rgba(16, 185, 129, 0.42);
+}
+
+.btn-liquid-emerald:active {
+  transform: scale(0.96);
+}
+
+/* Danger / Destructive Water-Drop Glass Button */
+.btn-liquid-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  font-family: var(--font-apple);
+  font-size: 13px;
+  font-weight: 600;
+  color: #FFFFFF !important;
+  background: var(--grad-water-danger);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.78),
+    0 8px 20px -5px rgba(239, 68, 68, 0.28);
+  transition: transform 0.25s var(--ease-apple), box-shadow 0.25s var(--ease-apple);
+}
+
+.btn-liquid-danger:hover {
+  transform: scale(1.03);
+}
+.btn-liquid-danger:active {
+  transform: scale(0.95);
+}
+
+/* Circular Translucent Glass Icon Lens (Globe, Menu, Close, Play, Back) */
+.btn-liquid-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(236, 245, 255, 0.40) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(185%);
+  -webkit-backdrop-filter: blur(20px) saturate(185%);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 2px rgba(0, 113, 227, 0.08),
+    0 6px 16px -4px rgba(10, 37, 64, 0.10);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.22s var(--ease-apple), box-shadow 0.22s var(--ease-apple), background 0.22s ease;
+}
+
+.btn-liquid-icon:hover {
+  transform: scale(1.06);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(232, 242, 255, 0.65) 100%);
+  border-color: rgba(10, 132, 255, 0.35);
+  box-shadow:
+    inset 0 1.5px 1px #FFFFFF,
+    0 10px 22px -4px rgba(10, 132, 255, 0.18);
+}
+
+.btn-liquid-icon:active {
+  transform: scale(0.93);
+}
+
+/* Translucent Water-Drop Chip / Pill Button (Search tags, tabs, filters) */
+.btn-liquid-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 7px 14px;
+  border-radius: 9999px;
+  font-family: var(--font-apple);
+  font-size: 12px;
+  font-weight: 600;
+  color: #1C1C1E;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.70) 0%, rgba(240, 246, 254, 0.45) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 4px 12px -3px rgba(10, 30, 60, 0.08);
+  cursor: pointer;
+  transition: transform 0.22s var(--ease-apple), background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+}
+
+.btn-liquid-chip:hover {
+  transform: translateY(-1px) scale(1.02);
+  color: #007AFF;
+  border-color: rgba(10, 132, 255, 0.32);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(232, 242, 255, 0.72) 100%);
+}
+
+.btn-liquid-chip:active {
+  transform: scale(0.96);
+}
+
+.btn-liquid-chip-active {
+  color: #FFFFFF !important;
+  background: var(--grad-water-primary);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.85),
+    0 6px 16px -4px rgba(0, 113, 227, 0.32);
+}
+
+/* =========================================================
+   IPHONE SETTINGS LIST & GROUPED INSET CARDS
+   ========================================================= */
+.ios-settings-group {
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  box-shadow: 0 2px 12px -2px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+/* =========================================================
+   SQUIRCLE INPUT FIELDS
+   ========================================================= */
+.squircle-input {
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(10, 132, 255, 0.16);
+  -webkit-appearance: none;
+  font-family: var(--font-apple);
+  transition: all 0.2s var(--ease-apple);
+}
+
+.squircle-input:focus {
+  outline: none;
+  background: #FFFFFF;
+  border-color: var(--blue-action);
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.16);
 }
 
 .font-bangla {
-  font-family: 'Hind Siliguri', 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-family: 'Hind Siliguri', var(--font-apple), -apple-system, sans-serif !important;
 }
 
 .font-english {
-  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+  font-family: var(--font-apple) !important;
 }
 
-/* Glassmorphism helpers */
+/* Glassmorphism Navigation Shell */
 .glass-nav {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(10, 37, 64, 0.08);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 14px 36px -10px rgba(10, 25, 50, 0.10);
 }
 
-.dark .glass-nav {
-  background: rgba(5, 13, 26, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
-}
-
-.glass-card-light {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(10, 37, 64, 0.08);
-}
-
-.dark .glass-card-dark {
-  background: rgba(13, 27, 42, 0.75);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 175, 55, 0.2);
-}
-
-/* Custom animated gradient glow */
-@keyframes pulseGlow {
-  0%, 100% {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.05);
-  }
-}
-
-.animate-pulse-glow {
-  animation: pulseGlow 4s ease-in-out infinite;
-}
-
-@keyframes floatSlow {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(1deg);
-  }
-}
-
-.animate-float-slow {
-  animation: floatSlow 6s ease-in-out infinite;
-}
-
-@keyframes orbitSpin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-orbit {
-  animation: orbitSpin 20s linear infinite;
-}
-
-/* Custom scrollbar */
+/* =========================================================
+   SINGLE CLEAN APPLE-STYLE TRANSLUCENT RIGHT SCROLLBAR
+   ========================================================= */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-.dark ::-webkit-scrollbar-track {
-  background: #050d1a;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #00A8E8;
-  border-radius: 4px;
+  background: rgba(15, 23, 42, 0.16);
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0A2540;
+  background: rgba(0, 122, 255, 0.45);
 }
 
-/* ============================
-   SUBTLE BLUE MEDICAL DOT GRID
-   — used as section bg accent
-============================= */
+* {
+  scrollbar-color: rgba(15, 23, 42, 0.18) transparent;
+  scrollbar-width: thin;
+}
+
+/* Subtle medical dot grid */
 .bg-medical-dots {
-  background-image: radial-gradient(circle, #00A8E820 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(10, 132, 255, 0.10) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 
-/* Hero main-content spacer: accounts for fixed navbar + topbar */
-.hero-offset {
-  padding-top: calc(2.5rem + 4rem); /* topbar 2.5rem + navbar 4rem */
+/* Prevent iOS Safari auto-zoom when tapping form controls < 16px on phones */
+@media (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
 }
+
+/* =========================================================
+   PINPOINT RESPONSIVE SCALING ARCHITECTURE (MOBILE -> 4K)
+   ========================================================= */
+
+/* Container Max-Widths */
+.pinpoint-container {
+  width: 92%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 480px) {
+  .pinpoint-container {
+    width: 90%;
+  }
+}
+
+@media (min-width: 768px) {
+  .pinpoint-container {
+    max-width: 720px;
+    width: 100%;
+  }
+}
+
 @media (min-width: 1024px) {
-  .hero-offset {
-    padding-top: calc(2.75rem + 4rem);
+  .pinpoint-container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .pinpoint-container {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .pinpoint-container {
+    max-width: 1400px;
+  }
+}
+
+/* Heading H1 Pinpoint Scaling */
+.pinpoint-h1 {
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+}
+
+@media (min-width: 480px) {
+  .pinpoint-h1 {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 768px) {
+  .pinpoint-h1 {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pinpoint-h1 {
+    font-size: 48px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .pinpoint-h1 {
+    font-size: 56px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .pinpoint-h1 {
+    font-size: 64px;
+  }
+}
+
+/* Button Pinpoint Heights */
+.btn-water-primary,
+.btn-water-secondary,
+.btn-liquid-glass,
+.btn-liquid-emerald {
+  min-height: 44px;
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .btn-water-primary,
+  .btn-water-secondary,
+  .btn-liquid-glass,
+  .btn-liquid-emerald {
+    min-height: 46px;
+  }
+}
+
+@media (min-width: 768px) {
+  .btn-water-primary,
+  .btn-water-secondary,
+  .btn-liquid-glass,
+  .btn-liquid-emerald {
+    min-height: 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .btn-water-primary,
+  .btn-water-secondary,
+  .btn-liquid-glass,
+  .btn-liquid-emerald {
+    min-height: 50px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .btn-water-primary,
+  .btn-water-secondary,
+  .btn-liquid-glass,
+  .btn-liquid-emerald {
+    min-height: 52px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .btn-water-primary,
+  .btn-water-secondary,
+  .btn-liquid-glass,
+  .btn-liquid-emerald {
+    min-height: 56px;
+  }
+}
+
+/* Picture Scaling */
+.responsive-clinical-img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+/* =========================================================
+   PILLAR 1 & 3: MOBILE ACCESSIBILITY, TAP TARGETS & FLUID GRIDS
+   ========================================================= */
+
+/* Global Viewport Containment */
+html, body {
+  max-width: 100vw;
+  overflow-x: clip;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img, picture, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Tap Target Sizing & Touch Responsiveness (Google Mobile-Friendly & WCAG 2.5.5) */
+@media (max-width: 767px) {
+  /* Eliminate double-tap zoom delay */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    touch-action: manipulation;
+  }
+
+  /* Ensure interactive icon lenses have minimum 44px tap zone */
+  .btn-liquid-icon {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Pseudo-target expansion for compact chips to guarantee 44px hit-box */
+  .btn-liquid-chip {
+    position: relative;
+    min-height: 36px;
+  }
+  .btn-liquid-chip::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    left: -4px;
+    right: -4px;
+    min-height: 44px;
+  }
+
+  /* Prevent inadvertent selection during mobile swipe / scrolling */
+  .btn-water-primary,
+  .btn-water-secondary,
+  .btn-liquid-glass,
+  .btn-liquid-emerald,
+  .btn-liquid-chip,
+  .btn-liquid-icon {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Smooth momentum scrolling for mobile overflow containers */
+  .scroll-touch {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
   }
 }
