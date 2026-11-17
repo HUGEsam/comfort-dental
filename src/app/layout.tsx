@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { AppProvider } from '@/context/AppContext';
 import SmoothScroll from '@/components/layout/SmoothScroll';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -212,6 +213,7 @@ export default function RootLayout({
             {children}
           </SmoothScroll>
         </AppProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
