@@ -46,8 +46,6 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   compress: true,
-  cacheComponents: true,
-  partialPrefetching: true,
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 86400,
